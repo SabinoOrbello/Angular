@@ -1,0 +1,76 @@
+<div class="container">
+  <h1 class="text-center" mb-3>Aggiungi studente</h1>
+  <form
+    [formGroup]="studentForm"
+    (ngSubmit)="onSubmit()"
+    class="container w-50 mt-4"
+  >
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome:</label>
+      <input
+        id="nome"
+        formControlName="nome"
+        type="text"
+        class="form-control"
+        [(ngModel)]="request.name"
+      />
+      <div
+        *ngIf="
+          studentForm.controls['nome'].invalid &&
+          studentForm.controls['nome'].touched
+        "
+        class="text-danger"
+      >
+        <small>Nome è obbligatorio</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input
+        id="email"
+        formControlName="email"
+        type="email"
+        class="form-control"
+        [(ngModel)]="request.email"
+      />
+      <div
+        *ngIf="
+          studentForm.controls['email'].invalid &&
+          studentForm.controls['email'].touched
+        "
+        class="text-danger"
+      >
+        <small>Inserisci una email valida</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label">Indirizzo:</label>
+      <input
+        id="address"
+        formControlName="address"
+        type="text"
+        class="form-control"
+        [(ngModel)]="request.address.city"
+      />
+      <div
+        *ngIf="
+          studentForm.get('address')?.invalid &&
+          studentForm.get('address')?.touched
+        "
+        class="text-danger"
+      >
+        <small>Indirizzo è obbligatorio</small>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="studentForm.invalid"
+    >
+      Aggiungi Studente
+    </button>
+  </form>
+</div>

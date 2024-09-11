@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'; // Import per il client HTTP
+import { RouterModule } from '@angular/router'; // Se usi routing
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [HttpClientModule, RouterModule], // Import di HttpClientModule per le chiamate API
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'corso-angular-midali';
+  title = 'angular-app';
 }
