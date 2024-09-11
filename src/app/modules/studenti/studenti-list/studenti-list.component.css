@@ -1,0 +1,49 @@
+.container {
+  max-width: 1200px;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-header {
+  background: linear-gradient(
+    90deg,
+    rgba(58, 123, 213, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  border-bottom: none;
+}
+
+.table {
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.table thead th {
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.table tbody td {
+  vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 123, 255, 0.05);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.shadow-lg {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+}

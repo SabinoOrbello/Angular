@@ -3,8 +3,9 @@ import { Observable } from 'rxjs';
 import { StudentiService } from '../../../services/studenti.service';
 import { CommonModule } from '@angular/common'; // Importa CommonModule
 import { AsyncPipe } from '@angular/common'; // Importa AsyncPipe
-import * as $ from 'jquery'; // Importa jQuery come uno spazio dei nomi
+import $ from 'jquery'; // Importa jQuery come uno spazio dei nomi
 import 'datatables.net'; // Importa DataTables
+import { Studente } from '../../../models/studente.module';
 
 @Component({
   selector: 'app-studenti-list',
@@ -14,7 +15,7 @@ import 'datatables.net'; // Importa DataTables
   styleUrls: ['./studenti-list.component.css'],
 })
 export class StudentiListComponent implements OnInit {
-  studenti$: Observable<any[]> | undefined;
+  studenti$!: Observable<Studente[]>;
 
   constructor(private studentiService: StudentiService) {}
 
@@ -23,7 +24,19 @@ export class StudentiListComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    // Inizializza DataTables dopo che la vista è stata renderizzata
-    $('#studentiTable').DataTable();
+    this.studenti$!.subscribe((data) => {
+      if (data && data.length > 0) {
+        // Inizializza DataTable solo quando i dati sono caricati
+        $('#studentiTable').DataTable({
+          data: data,
+          columns: [
+            { title: 'ID', data: 'id' },
+            { title: 'Nome', data: 'name' },
+            { title: 'Email', data: 'email' },
+            { title: 'Indirizzo', data: 'address.city' },
+          ],
+        });
+      }
+    });
   }
 }
